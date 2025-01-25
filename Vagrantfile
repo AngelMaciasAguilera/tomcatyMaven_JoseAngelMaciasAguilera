@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
                                -DarchetypeArtifactId=maven-archetype-webapp \
                                -DinteractiveMode=fa
         sudo cp -vr /vagrant/pom.xml /home/vagrant/tomcat-war-deployment/pom.xml
+        cd /home/vagrant/tomcat-war-deployment
         sudo mvn tomcat7:deploy
     SHELL
   end
