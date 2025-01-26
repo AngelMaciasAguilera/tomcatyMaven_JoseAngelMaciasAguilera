@@ -31,5 +31,14 @@ Vagrant.configure("2") do |config|
         cd /home/vagrant/tomcat-war-deployment
         sudo mvn tomcat7:deploy
     SHELL
+
+    tomcat_machine.vm.provision "shell", name: "page_deploy", inline: <<-SHELL
+        sudo apt-get install -y git
+        sudo git clone https://github.com/cameronmcnz/rock-paper-scissors.git
+        cd rock-paper-scissors
+        git checkout patch-1
+        sudo cp -vr /vagrant/pageProof/pom.xml /home/vagrant/rock-paper-scissors/pom.xml        
+    SHELL
+
   end
 end
